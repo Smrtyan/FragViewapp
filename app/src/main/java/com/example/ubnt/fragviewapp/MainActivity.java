@@ -1,26 +1,40 @@
 package com.example.ubnt.fragviewapp;
 
-import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    int mStackLevel = 0;
 
+    void showDialog() {
+        mStackLevel++;
 
+        // DialogFragment.show() will take care of adding the fragment
+        // in a transaction.  We also want to remove any currently showing
+        // dialog, so make our own transaction and take care of that here.
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        Fragment prev = getSupportFragmentManager().findFragmentByTag("dialog");
+        if (prev != null) {
+            ft.remove(prev);
+        }
+        ft.addToBackStack(null);
+
+        // Create and show the dialog.
+        DialogFragment newFragment = DeleteFragment.newInstance(mStackLevel);
+        newFragment.show(ft,"dialog");
+
+    }
     ListView simpleList;
     ArrayList<Item> countriesList=new ArrayList<>();
 
@@ -63,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
          @Override
          public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 //             DeleteDialog deleteDialog = new DeleteD
+             showDialog();
              return true;
          }
      });
