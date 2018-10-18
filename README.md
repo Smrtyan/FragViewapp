@@ -5,7 +5,7 @@
 
 ## 预览
 
-![Preview](https://github.com/Smrtyan/FragViewapp/blob/master/Screen%20Shot%202018-10-18%20at%201.21.45%20PM.png)
-![Preview](https://github.com/Smrtyan/FragViewapp/blob/master/Screen%20Shot%202018-10-18%20at%201.23.31%20PM.png)
-![Preview](https://github.com/Smrtyan/FragViewapp/blob/master/Screen%20Shot%202018-10-18%20at%201.23.40%20PM.png)
-![Preview](https://github.com/Smrtyan/FragViewapp/blob/master/Screen%20Shot%202018-10-18%20at%201.23.47%20PM.png)
+<img width="300"  src="https://github.com/Smrtyan/FragViewapp/blob/master/Screen%20Shot%202018-10-18%20at%201.21.45%20PM.png"/>
+<img width="300"  src="https://github.com/Smrtyan/FragViewapp/blob/master/Screen%20Shot%202018-10-18%20at%201.23.31%20PM.png"/>
+<img width="300"  src="https://github.com/Smrtyan/FragViewapp/blob/master/Screen%20Shot%202018-10-18%20at%201.23.40%20PM.png"/>
+<img width="300"  src="https://github.com/Smrtyan/FragViewapp/blob/master/Screen%20Shot%202018-10-18%20at%201.23.47%20PM.png"/>
