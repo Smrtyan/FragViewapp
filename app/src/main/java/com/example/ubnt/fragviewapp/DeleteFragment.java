@@ -4,10 +4,12 @@ package com.example.ubnt.fragviewapp;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
@@ -70,13 +72,22 @@ public class DeleteFragment extends DialogFragment {
         btn_yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                MainActivity activity = (MainActivity) getActivity();
+                String country = getArguments().getString("country");
+                Log.v("country",country);
+//                LinearLayout parents =  ((LinearLayout)activity.findViewById(R.id.ll_list));
+//                View viewToBeRemoved =parents.findViewWithTag(country);
+//                parents.removeView(viewToBeRemoved);
+//                   // ((ViewGroup)view.getParent()).removeView(view);
+                activity.updateListView(country);
+                dismiss();
 
             }
         });
         btn_no.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+                dismiss();
             }
         });
         return v;

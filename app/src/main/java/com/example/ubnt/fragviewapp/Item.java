@@ -18,4 +18,14 @@ public class Item {
     {
         return Image;
     }
+
+    @Override
+    public String toString() {
+        return Name;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Name.equals(obj.toString());
+    }
 }

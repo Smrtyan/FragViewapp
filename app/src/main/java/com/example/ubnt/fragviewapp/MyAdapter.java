@@ -13,11 +13,11 @@ import java.util.ArrayList;
 
 public class MyAdapter extends ArrayAdapter<Item> {
 
-    ArrayList<Item> animalList = new ArrayList<>();
+    ArrayList<Item> countriesList = new ArrayList<>();
 
     public MyAdapter(Context context, int textViewResourceId, ArrayList<Item> objects) {
         super(context, textViewResourceId, objects);
-        animalList = objects;
+        countriesList = objects;
     }
 
     @Override
@@ -33,8 +33,10 @@ public class MyAdapter extends ArrayAdapter<Item> {
         v = inflater.inflate(R.layout.list_view_items, null);
         TextView textView = (TextView) v.findViewById(R.id.textView);
         ImageView imageView = (ImageView) v.findViewById(R.id.imageView);
-        textView.setText(animalList.get(position).getName());
-        imageView.setImageResource(animalList.get(position).getImage());
+        textView.setText(countriesList.get(position).getName());
+        imageView.setImageResource(countriesList.get(position).getImage());
+        //set tag as country's name  for the viewGroup
+        ((ViewGroup)textView.getParent()).setTag(textView.getText());
         return v;
 
     }

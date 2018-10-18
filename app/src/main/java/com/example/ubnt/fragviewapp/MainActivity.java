@@ -6,9 +6,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -17,7 +19,10 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     int mStackLevel = 0;
 
-    void showDialog() {
+    void showDialog(View v) {
+        String country  = (String) ((TextView)findViewById(R.id.textView)).getText();
+        Bundle args = new Bundle();
+        args.putString("country",country);
         mStackLevel++;
 
         // DialogFragment.show() will take care of adding the fragment
@@ -32,10 +37,12 @@ public class MainActivity extends AppCompatActivity {
 
         // Create and show the dialog.
         DialogFragment newFragment = DeleteFragment.newInstance(mStackLevel);
+        newFragment.setArguments(args);
         newFragment.show(ft,"dialog");
 
     }
     ListView simpleList;
+    MyAdapter adapter;
     ArrayList<Item> countriesList=new ArrayList<>();
 
     private static final String[] COUNTRIES = {
@@ -61,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
             countriesList.add(new Item(country, getResources().getIdentifier(country,"drawable",getPackageName())));
         }
 
-        MyAdapter adapter=new MyAdapter(this,R.layout.list_view_items,countriesList);
+        adapter=new MyAdapter(this,R.layout.list_view_items,countriesList);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -77,9 +84,14 @@ public class MainActivity extends AppCompatActivity {
          @Override
          public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 //             DeleteDialog deleteDialog = new DeleteD
-             showDialog();
+             showDialog(view);
              return true;
          }
      });
+    }
+    public void updateListView(String countryName){
+        boolean b = countriesList.remove(new Item(countryName, getResources().getIdentifier(countryName,"drawable",getPackageName())));
+        Log.v("countryname",""+b);
+        adapter.notifyDataSetChanged();
     }
 }
